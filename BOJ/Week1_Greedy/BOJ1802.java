@@ -1,4 +1,4 @@
-package BOJ;
+package BOJ.Week1_Greedy;
 
 import java.io.BufferedReader;
 import java.io.IOException;
