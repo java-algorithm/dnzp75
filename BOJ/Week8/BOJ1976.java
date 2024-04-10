@@ -8,6 +8,25 @@ import java.util.StringTokenizer;
 public class BOJ1976 {
     static int[] parent; // 부모 노드를 저장할 배열
 
+
+    // Find 함수: 특정 원소가 속한 집합을 찾음
+    public static int find(int x) {
+        if (x == parent[x]) {
+            return x;
+        } else {
+            return find(parent[x]);
+        }
+    }
+
+    // Union 함수: 두 원소가 속한 집합을 합침
+    public static void union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if (rootX != rootY) {
+            parent[rootY] = rootX; // 루트 노드를 연결하여 집합을 합침
+        }
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -43,23 +62,5 @@ public class BOJ1976 {
         }
 
         System.out.println("YES");
-    }
-
-    // Find 함수: 특정 원소가 속한 집합을 찾음
-    public static int find(int x) {
-        if (x == parent[x]) {
-            return x;
-        } else {
-            return find(parent[x]);
-        }
-    }
-
-    // Union 함수: 두 원소가 속한 집합을 합침
-    public static void union(int x, int y) {
-        int rootX = find(x);
-        int rootY = find(y);
-        if (rootX != rootY) {
-            parent[rootY] = rootX; // 루트 노드를 연결하여 집합을 합침
-        }
     }
 }
